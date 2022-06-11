@@ -1,6 +1,7 @@
 package rnd.mate00.springmappingtable.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "product")
 @Data
+@NoArgsConstructor
 public class Product {
 
     @Id

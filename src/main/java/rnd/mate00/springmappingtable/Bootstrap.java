@@ -48,6 +48,9 @@ public class Bootstrap implements CommandLineRunner {
                 regionRepository.findByRegionName("EMEA").orElse(null)
         ));
         productRepository.save(prod2);
+
+        Product newProduct = new Product("new product");
+        productRepository.save(newProduct);
     }
 
     private void addOffices() {
