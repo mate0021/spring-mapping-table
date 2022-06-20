@@ -54,16 +54,19 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     private void addOffices() {
-        Office pol1 = new Office("pol1");
-        Office pol2 = new Office("pol2");
-        Office pol3 = new Office("pol3");
+        Country pol = countryRepository.findByCountryName("Poland").get();
+        Country ger = countryRepository.findByCountryName("Germany").get();
+        Country fra = countryRepository.findByCountryName("France").get();
+        Office pol1 = new Office("pol1", pol);
+        Office pol2 = new Office("pol2", pol);
+        Office pol3 = new Office("pol3", pol);
 
-        Office ger1 = new Office("ger1");
-        Office ger2 = new Office("ger2");
+        Office ger1 = new Office("ger1", ger);
+        Office ger2 = new Office("ger2", ger);
 
-        Office fra1 = new Office("fra1");
-        Office fra2 = new Office("fra2");
-        Office fra3 = new Office("fra3");
+        Office fra1 = new Office("fra1", fra);
+        Office fra2 = new Office("fra2", fra);
+        Office fra3 = new Office("fra3", fra);
 
         officeRepository.save(pol1);
         officeRepository.save(pol2);
@@ -76,10 +79,12 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     private void addCountries() {
-        Country pol = new Country("Poland");
-        Country ger = new Country("Germany");
-        Country fra = new Country("France");
-        Country mex = new Country("Mexico");
+        Region emea = regionRepository.findByRegionName("EMEA").get();
+        Region amer = regionRepository.findByRegionName("AMERICAS").get();
+        Country pol = new Country("Poland", emea);
+        Country ger = new Country("Germany", emea);
+        Country fra = new Country("France", emea);
+        Country mex = new Country("Mexico", amer);
         countryRepository.save(pol);
         countryRepository.save(ger);
         countryRepository.save(fra);

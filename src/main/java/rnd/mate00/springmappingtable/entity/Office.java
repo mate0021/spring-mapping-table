@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name = "office")
@@ -20,7 +21,11 @@ public class Office {
 
     private String officeName;
 
-    public Office(String officeName) {
+    @ManyToOne
+    private Country country;
+
+    public Office(String officeName, Country country) {
         this.officeName = officeName;
+        this.country = country;
     }
 }
