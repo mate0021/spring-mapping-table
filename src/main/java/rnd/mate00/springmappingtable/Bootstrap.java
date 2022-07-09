@@ -2,6 +2,7 @@ package rnd.mate00.springmappingtable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import rnd.mate00.springmappingtable.entity.Country;
 import rnd.mate00.springmappingtable.entity.Office;
@@ -12,6 +13,7 @@ import rnd.mate00.springmappingtable.repository.*;
 import java.util.List;
 
 @Component
+@Profile({"local", "default"})
 public class Bootstrap implements CommandLineRunner {
 
     @Autowired
