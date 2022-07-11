@@ -74,6 +74,30 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.2.2</version>
+				<configuration>
+					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8</url>
+					<username>bookadmin</username>
+					<password>password</password>
+
+					<outputChangeLogFile>changelog.xml</outputChangeLogFile>
+					<changelogSchemaName>bookdb</changelogSchemaName>
+				</configuration>
+
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql.version}</version>
+					</dependency>
+				</dependencies>
+
+			</plugin>
+
 		</plugins>
 	</build>
 
