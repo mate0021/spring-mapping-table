@@ -3,10 +3,7 @@ package rnd.mate00.springmappingtable.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "region")
@@ -18,6 +15,7 @@ public class Region {
     @GeneratedValue
     private int regionId;
 
+    @Column(unique = true)
     private String regionName;
 
 
