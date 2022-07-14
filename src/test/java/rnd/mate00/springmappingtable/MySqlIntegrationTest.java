@@ -6,6 +6,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ActiveProfiles;
+import rnd.mate00.springmappingtable.entity.Book;
+import rnd.mate00.springmappingtable.repository.BookRepository;
 import rnd.mate00.springmappingtable.repository.CountryRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,8 +21,22 @@ public class MySqlIntegrationTest {
     @Autowired
     private CountryRepository countryRepository;
 
+    @Autowired
+    private BookRepository bookRepository;
+
     @Test
     public void countriesShouldBeThere() {
-        assertThat(countryRepository.count()).isEqualTo(4);
+        // commenting that out for now as I turned off Bootstrap
+//        assertThat(countryRepository.count()).isEqualTo(4);
+    }
+
+    @Test
+    public void checkGeneratedUuid() {
+        Book book = new Book("UUID by example", "John Thompson");
+
+        final Book result = bookRepository.save(book);
+
+        System.out.println(result.getBookId());
+        assertThat(result.getBookId()).isNotNull();
     }
 }
