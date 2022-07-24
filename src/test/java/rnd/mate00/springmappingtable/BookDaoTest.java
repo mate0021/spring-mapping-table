@@ -1,5 +1,6 @@
 package rnd.mate00.springmappingtable;
 
+import liquibase.repackaged.org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -23,10 +24,24 @@ public class BookDaoTest {
 
     @Test
     public void shouldSaveNewBook() {
-        Book book = new Book("Go by Example", "Google Developers");
+        String testTitle = "Go by Example" + RandomStringUtils.randomAlphabetic(10);
+        String testAuthor = "Google Developers" + RandomStringUtils.randomAlphabetic(10);
+        Book book = new Book(testTitle, testAuthor);
+
         Book savedBook = bookDao.saveBook(book);
 
         assertThat(savedBook).isNotNull();
         System.out.println(savedBook.getBookId());
+    }
+
+    @Test
+    public void shouldFindByTitle() {
+        String testTitle = "Title" + RandomStringUtils.randomAlphabetic(10);
+        String testAuthor = "Author" + RandomStringUtils.randomAlphabetic(10);
+        bookDao.saveBook(new Book(testTitle, testAuthor));
+
+        final Book result = bookDao.findBookByTitle(testTitle);
+
+        assertThat(result).isNotNull();
     }
 }
