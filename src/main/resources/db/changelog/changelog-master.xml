@@ -14,4 +14,5 @@
     <include file="db/changelog/03-book-uuid.xml"/>
     <include file="db/changelog/04-author-uuid.xml"/>
     <include file="db/changelog/05-author-with-composite-key.xml"/>
+    <include file="db/changelog/06-alter-book-add-unique-constraint.xml"/>
 </databaseChangeLog>
