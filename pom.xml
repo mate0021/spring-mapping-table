@@ -85,12 +85,16 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>4.2.2</version>
 				<configuration>
-					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8</url>
-					<username>bookadmin</username>
+					<url>jdbc:mysql://127.0.0.1:3306/orderservice?useUnicode=true&amp;characterEncoding=UTF-8</url>
+					<username>orderadmin</username>
 					<password>password</password>
+<!--					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&amp;characterEncoding=UTF-8</url>-->
+<!--					<username>bookadmin</username>-->
+<!--					<password>password</password>-->
 
 					<outputChangeLogFile>changelog.xml</outputChangeLogFile>
-					<changelogSchemaName>bookdb</changelogSchemaName>
+					<changelogSchemaName>orderservice</changelogSchemaName>
+<!--					<changelogSchemaName>bookdb</changelogSchemaName>-->
 				</configuration>
 
 				<dependencies>

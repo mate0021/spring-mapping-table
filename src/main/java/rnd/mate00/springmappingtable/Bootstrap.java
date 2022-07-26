@@ -13,7 +13,7 @@ import rnd.mate00.springmappingtable.repository.*;
 import java.util.List;
 
 @Component
-@Profile({"!local", "default"})
+@Profile({"!local", "default", "!order"})
 public class Bootstrap implements CommandLineRunner {
 
     @Autowired

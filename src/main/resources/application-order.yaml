@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: orderuser
+    password: password
+    url: jdbc:mysql://127.0.0.1:3306/orderservice?useUnicode=true&characterEncoding=UTF-8
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: validate
+
+  liquibase:
+    user: orderadmin
+    password: password
+    change-log: db/changelog/orderservice/changelog-master.xml
+#    change-log: db/changelog/changelog-master.xml
