@@ -1,0 +1,5 @@
+FROM mysql
+
+ENV MYSQL_ROOT_PASSWORD=rootpass
+
+COPY mysql_scripts/init-order-service.sql /docker-entrypoint-initdb.d
