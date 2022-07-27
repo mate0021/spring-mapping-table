@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 
-@Entity
-@Table(name = "office")
+//@Entity
+//@Table(name = "office")
 @Data
 @NoArgsConstructor
 public class Office {

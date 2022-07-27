@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "region")
+//@Entity
+//@Table(name = "region")
 @Data
 @NoArgsConstructor
 public class Region {

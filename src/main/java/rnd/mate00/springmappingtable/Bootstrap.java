@@ -16,22 +16,22 @@ import java.util.List;
 @Profile({"!local", "default", "!order"})
 public class Bootstrap implements CommandLineRunner {
 
-    @Autowired
+//    @Autowired
     private RegionRepository regionRepository;
 
-    @Autowired
+//    @Autowired
     private CountryRepository countryRepository;
 
-    @Autowired
+//    @Autowired
     private OfficeRepository officeRepository;
 
-    @Autowired
+//    @Autowired
     private ProductRepository productRepository;
 
 
     @Override
-    public void run(String... args) throws Exception {
-        addRegions();
+    public void run(String... args) throws Exception {}
+/*        addRegions();
         addCountries();
         addOffices();
 
@@ -100,5 +100,5 @@ public class Bootstrap implements CommandLineRunner {
         regionRepository.save(amer);
         regionRepository.save(apac);
         regionRepository.save(emea);
-    }
+    }*/
 }

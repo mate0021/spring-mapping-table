@@ -5,8 +5,8 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Entity
-@Table(name = "author")
+//@Entity
+//@Table(name = "author")
 public class Author {
 
     @Id

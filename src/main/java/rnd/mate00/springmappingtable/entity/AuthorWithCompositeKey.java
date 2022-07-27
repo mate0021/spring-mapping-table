@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Objects;
 
-@Entity
-@Table(name = "author_composite")
+//@Entity
+//@Table(name = "author_composite")
 public class AuthorWithCompositeKey {
 
     @EmbeddedId

@@ -7,7 +7,7 @@ import rnd.mate00.springmappingtable.entity.Office;
 import java.util.Optional;
 
 @Repository
-public interface OfficeRepository extends JpaRepository<Office, Integer> {
+public interface OfficeRepository {//extends JpaRepository<Office, Integer> {
 
     Optional<Office> findByOfficeName(String name);
 }

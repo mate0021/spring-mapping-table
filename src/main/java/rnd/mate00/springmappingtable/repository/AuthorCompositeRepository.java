@@ -6,5 +6,5 @@ import rnd.mate00.springmappingtable.entity.AuthorNameKey;
 import rnd.mate00.springmappingtable.entity.AuthorWithCompositeKey;
 
 @Repository
-public interface AuthorCompositeRepository extends JpaRepository<AuthorWithCompositeKey, AuthorNameKey> {
+public interface AuthorCompositeRepository {//extends JpaRepository<AuthorWithCompositeKey, AuthorNameKey> {
 }

@@ -7,7 +7,7 @@ import rnd.mate00.springmappingtable.entity.Region;
 import java.util.Optional;
 
 @Repository
-public interface RegionRepository extends JpaRepository<Region, Integer> {
+public interface RegionRepository {//extends JpaRepository<Region, Integer> {
 
     Optional<Region> findByRegionName(String name);
 }

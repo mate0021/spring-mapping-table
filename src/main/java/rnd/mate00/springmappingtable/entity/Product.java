@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "product")
+//@Entity
+//@Table(name = "product")
 @Data
 @NoArgsConstructor
 public class Product {

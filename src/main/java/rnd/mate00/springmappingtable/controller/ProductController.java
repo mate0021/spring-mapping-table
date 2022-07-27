@@ -19,16 +19,16 @@ import java.util.Optional;
 @RestController
 public class ProductController {
 
-    @Autowired
+//    @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
+//    @Autowired
     private RegionRepository regionRepository;
 
-    @Autowired
+//    @Autowired
     private CountryRepository countryRepository;
 
-    @Autowired
+//    @Autowired
     private OfficeRepository officeRepository;
 
     @GetMapping("/")
@@ -68,7 +68,7 @@ public class ProductController {
             newProduct.get().setRegions(regionsToAdd);
             newProduct.get().setCountries(countriesToAdd);
             newProduct.get().setOffices(officesToAdd);
-            productRepository.save(newProduct.get());
+//            productRepository.save(newProduct.get());
         }
 
         return "products";

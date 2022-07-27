@@ -20,7 +20,7 @@ public class BookDaoTest {
 
     @Autowired
     private BookDaoHibernateImpl bookDao;
-
+/*
     @Test
     public void shouldSaveNewBook() {
         Book book = new Book("Go by Example", "Google Developers");
@@ -28,5 +28,5 @@ public class BookDaoTest {
 
         assertThat(savedBook).isNotNull();
         System.out.println(savedBook.getBookId());
-    }
+    }*/
 }

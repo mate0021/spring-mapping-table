@@ -7,7 +7,7 @@ import rnd.mate00.springmappingtable.entity.Country;
 import java.util.Optional;
 
 @Repository
-public interface CountryRepository extends JpaRepository<Country, Integer> {
+public interface CountryRepository {//extends JpaRepository<Country, Integer> {
 
     Optional<Country> findByCountryName(String name);
 }

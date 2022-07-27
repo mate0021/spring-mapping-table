@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.ManyToOne;
 
-@Entity
-@Table(name = "country")
+//@Entity
+//@Table(name = "country")
 @Data
 @NoArgsConstructor
 public class Country {

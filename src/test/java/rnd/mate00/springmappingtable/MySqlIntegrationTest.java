@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // <- to prevent using H2
 @ComponentScan(basePackages = {"rnd.mate00.springmappingtable"})
 public class MySqlIntegrationTest {
-
+/*
     @Autowired
     private CountryRepository countryRepository;
 
@@ -33,7 +33,7 @@ public class MySqlIntegrationTest {
     private BookRepository bookRepository;
 
     @Autowired
-    private AuthorCompositeRepository authorCompositeRepository;
+    private AuthorCompositeRepository authorCompositeRepository;*/
 
 
     @Test
@@ -42,7 +42,7 @@ public class MySqlIntegrationTest {
 //        assertThat(countryRepository.count()).isEqualTo(4);
     }
 
-    @Test
+    /*@Test
     public void checkGeneratedUuid() {
         Book book = new Book("UUID by example", "John Thompson");
 
@@ -62,5 +62,5 @@ public class MySqlIntegrationTest {
 
         assertThat(authorCompositeRepository.count()).isEqualTo(1);
         System.out.println(authorCompositeRepository.findAll());
-    }
+    }*/
 }
