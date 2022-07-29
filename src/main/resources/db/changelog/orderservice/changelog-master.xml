@@ -14,5 +14,5 @@
     <include file="db/changelog/orderservice/03-update-orderheader-address.xml"/>
     <include file="db/changelog/orderservice/04-update-orderheader-add-orderstatus.xml"/>
     <include file="db/changelog/orderservice/05-update-orderheader-add-createddate.xml"/>
-
+    <include file="db/changelog/orderservice/06-add-table-product.xml"/>
 </databaseChangeLog>
