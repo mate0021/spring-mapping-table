@@ -36,6 +36,13 @@ public class OrderHeader extends BaseEntity {
     public OrderHeader() {
     }
 
+    public OrderHeader(String customer, Address shippingAddress, Address billingAddress, OrderStatus orderStatus) {
+        this.customer = customer;
+        this.shippingAddress = shippingAddress;
+        this.billingAddress = billingAddress;
+        this.orderStatus = orderStatus;
+    }
+
     public String getCustomer() {
         return customer;
     }
