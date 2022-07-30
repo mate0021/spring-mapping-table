@@ -15,4 +15,6 @@
     <include file="db/changelog/orderservice/04-update-orderheader-add-orderstatus.xml"/>
     <include file="db/changelog/orderservice/05-update-orderheader-add-createddate.xml"/>
     <include file="db/changelog/orderservice/06-add-table-product.xml"/>
+    <include file="db/changelog/orderservice/07-add-table-orderline.xml"/>
+    <include file="db/changelog/orderservice/08-add-autoincrements.xml"/>
 </databaseChangeLog>
