@@ -14,6 +14,9 @@ public class OrderLine extends BaseEntity {
     @ManyToOne
     private OrderHeader orderHeader;
 
+    @ManyToOne
+    private Product product;
+
     public OrderLine() {
     }
 
@@ -35,6 +38,14 @@ public class OrderLine extends BaseEntity {
 
     public void setOrderHeader(OrderHeader orderHeader) {
         this.orderHeader = orderHeader;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override
