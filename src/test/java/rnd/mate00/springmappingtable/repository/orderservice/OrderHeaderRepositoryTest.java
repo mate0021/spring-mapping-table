@@ -1,6 +1,7 @@
 package rnd.mate00.springmappingtable.repository.orderservice;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,7 +12,10 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import rnd.mate00.springmappingtable.entity.orderservice.OrderHeader;
+import rnd.mate00.springmappingtable.entity.orderservice.OrderLine;
 import rnd.mate00.springmappingtable.entity.orderservice.OrderStatus;
+
+import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,6 +37,29 @@ class OrderHeaderRepositoryTest {
 
         assertThat(saved).isNotNull();
         assertThat(saved.getId()).isNotNull();
+    }
+
+    @Test
+    public void saveWithOrderLine() {
+        OrderHeader orderHeader = new OrderHeader("New Customer", null, null, OrderStatus.NEW);
+        OrderLine l1 = new OrderLine(5);
+        OrderLine l2 = new OrderLine(25);
+
+//        l1.setOrderHeader(orderHeader); // <- this can be done by idiom in OrderHeader.addOrderLine()
+//        l2.setOrderHeader(orderHeader);
+//        orderHeader.setOrderLines(Set.of(l1, l2));
+        orderHeader.addOrderLine(l1);
+        orderHeader.addOrderLine(l2);
+
+        OrderHeader saved = orderHeaderRepository.save(orderHeader);
+        assertThat(saved).isNotNull();
+        assertThat(saved.getOrderLines()).size().isEqualTo(2);
+
+        Set<OrderLine> orderLines = saved.getOrderLines();
+        for (OrderLine ol : orderLines) {
+            assertThat(ol.getId()).isNotNull();         // <- this will fail unless I get CascadeType.PERSIST in my Entity
+            assertThat(ol.getCreatedDate()).isNotNull();//    or unless I save l1 and l2 first, and then save orderHeader
+        }
     }
 
 }

@@ -1,14 +1,9 @@
 package rnd.mate00.springmappingtable.entity.orderservice;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "order_header")
@@ -32,6 +27,14 @@ public class OrderHeader extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+
+    @OneToMany(mappedBy = "orderHeader", cascade = CascadeType.PERSIST)
+    private Set<OrderLine> orderLines = new HashSet<>();
+
+    public void addOrderLine(OrderLine orderLine) {
+        orderLines.add(orderLine);
+        orderLine.setOrderHeader(this);
+    }
 
     public OrderHeader() {
     }
@@ -73,6 +76,14 @@ public class OrderHeader extends BaseEntity {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public Set<OrderLine> getOrderLines() {
+        return orderLines;
+    }
+
+    public void setOrderLines(Set<OrderLine> orderLines) {
+        this.orderLines = orderLines;
     }
 
     @Override
