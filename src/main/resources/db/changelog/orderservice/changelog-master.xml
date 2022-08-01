@@ -18,6 +18,7 @@
     <include file="db/changelog/orderservice/07-add-table-orderline.xml"/>
     <include file="db/changelog/orderservice/08-add-autoincrements.xml"/>
     <include file="db/changelog/orderservice/09-update-orderline-add-productfk.xml"/>
+    <include file="db/changelog/orderservice/10-add-table-product-category.xml"/>
 
 
 </databaseChangeLog>
