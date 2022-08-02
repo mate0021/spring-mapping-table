@@ -31,6 +31,9 @@ public class OrderHeader extends BaseEntity {
     @OneToMany(mappedBy = "orderHeader", cascade = CascadeType.PERSIST)
     private Set<OrderLine> orderLines = new HashSet<>();
 
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "orderHeader")
+    private OrderApproval orderApproval;
+
     public void addOrderLine(OrderLine orderLine) {
         orderLines.add(orderLine);
         orderLine.setOrderHeader(this);
@@ -84,6 +87,15 @@ public class OrderHeader extends BaseEntity {
 
     public void setOrderLines(Set<OrderLine> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public OrderApproval getOrderApproval() {
+        return orderApproval;
+    }
+
+    public void setOrderApproval(OrderApproval orderApproval) {
+        this.orderApproval = orderApproval;
+        orderApproval.setOrderHeader(this);
     }
 
     @Override
