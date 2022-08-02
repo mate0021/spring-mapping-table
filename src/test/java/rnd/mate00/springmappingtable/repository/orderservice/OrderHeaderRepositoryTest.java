@@ -38,6 +38,10 @@ class OrderHeaderRepositoryTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private OrderApprovalRepository orderApprovalRepository;
+
+
     @Test
     public void saveOrderHeader() {
         OrderHeader orderHeader = new OrderHeader("New Customer", null, null, OrderStatus.NEW);
@@ -80,6 +84,21 @@ class OrderHeaderRepositoryTest {
 
         assertThat(savedProduct.getCategories()).hasSize(1);
         assertThat(savedCategory.getProducts()).isNotNull();
+    }
+
+    @Test
+    public void cascadePersistOnOrderApproval() {
+        OrderHeader oh = new OrderHeader("customer to approve", null, null, OrderStatus.NEW);
+        oh.setOrderApproval(new OrderApproval("mate00"));
+
+        OrderHeader savedHeader = orderHeaderRepository.save(oh);
+
+        assertThat(savedHeader).isNotNull();
+        assertThat(savedHeader.getOrderApproval()).isNotNull();
+        assertThat(savedHeader.getOrderApproval().getApprovedBy()).isEqualTo("mate00");
+
+        assertThat(orderApprovalRepository.findByApprovedBy("mate00").isPresent()).isTrue(); // <- thanks to CascadeType.PERSIST
+                                                                                             // otherwise we get TransientPropertyValueExc
     }
 
 }

@@ -15,7 +15,12 @@ public class OrderApproval extends BaseEntity {
     @JoinColumn(name = "order_header_id")
     private OrderHeader orderHeader;
 
+
     public OrderApproval() {
+    }
+
+    public OrderApproval(String approvedBy) {
+        this.approvedBy = approvedBy;
     }
 
     public String getApprovedBy() {

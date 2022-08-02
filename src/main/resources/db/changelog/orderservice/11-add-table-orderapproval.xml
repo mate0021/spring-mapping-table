@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet author="mate00" id="10">
+    <changeSet author="mate00" id="11">
 
         <createTable tableName="order_approval">
             <column name="id" type="BIGINT">
@@ -25,22 +25,6 @@
                              referencedColumnNames="id"/>
             </column>
         </addColumn>
-
-
-
-        <createTable tableName="product_category">
-            <column name="product_id" type="BIGINT">
-                <constraints referencedTableName="product" referencedColumnNames="id" foreignKeyName="pc_product_id_fk"/>
-            </column>
-            <column name="category_id" type="BIGINT">
-                <constraints referencedTableName="category" referencedColumnNames="id" foreignKeyName="pc_category_id_fk"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey
-                tableName="product_category"
-                columnNames="product_id, category_id"
-                constraintName="pk_product_to_category"/>
 
     </changeSet>
 </databaseChangeLog>
