@@ -10,6 +10,15 @@ public class Address {
     private String city;
     private String postalCode;
 
+    public Address() {
+    }
+
+    public Address(String address, String city, String postalCode) {
+        this.address = address;
+        this.city = city;
+        this.postalCode = postalCode;
+    }
+
     public String getAddress() {
         return address;
     }

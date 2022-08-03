@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import rnd.mate00.springmappingtable.entity.orderservice.Address;
 import rnd.mate00.springmappingtable.entity.orderservice.Category;
+import rnd.mate00.springmappingtable.entity.orderservice.Customer;
 import rnd.mate00.springmappingtable.entity.orderservice.OrderApproval;
 import rnd.mate00.springmappingtable.entity.orderservice.OrderHeader;
 import rnd.mate00.springmappingtable.entity.orderservice.OrderLine;
@@ -40,6 +42,9 @@ class OrderHeaderRepositoryTest {
 
     @Autowired
     private OrderApprovalRepository orderApprovalRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
 
     @Test
@@ -99,6 +104,20 @@ class OrderHeaderRepositoryTest {
 
         assertThat(orderApprovalRepository.findByApprovedBy("mate00").isPresent()).isTrue(); // <- thanks to CascadeType.PERSIST
                                                                                              // otherwise we get TransientPropertyValueExc
+    }
+
+    @Test
+    public void orderWithCustomer() {
+        Customer c = new Customer();
+        c.setCustomerName("New Customer");
+        c.setAddress(new Address("Street", "City", "AB-005"));
+        Customer savedCustomer = customerRepository.save(c);
+
+        OrderHeader header = new OrderHeader(savedCustomer, null, null, OrderStatus.IN_PROCESS);
+        OrderHeader savedHeader = orderHeaderRepository.save(header);
+
+        assertThat(savedHeader).isNotNull();
+        assertThat(savedHeader.getCustomer().getCustomerName()).isEqualTo("New Customer");
     }
 
 }

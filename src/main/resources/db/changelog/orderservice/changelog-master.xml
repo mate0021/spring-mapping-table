@@ -20,6 +20,7 @@
     <include file="db/changelog/orderservice/09-update-orderline-add-productfk.xml"/>
     <include file="db/changelog/orderservice/10-add-table-product-category.xml"/>
     <include file="db/changelog/orderservice/11-add-table-orderapproval.xml"/>
+    <include file="db/changelog/orderservice/12-add-table-customer.xml"/>
 
 
 </databaseChangeLog>
