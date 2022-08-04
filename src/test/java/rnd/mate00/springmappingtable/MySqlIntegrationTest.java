@@ -1,5 +1,6 @@
 package rnd.mate00.springmappingtable;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -36,6 +37,7 @@ public class MySqlIntegrationTest {
     private AuthorCompositeRepository authorCompositeRepository;*/
 
 
+    @Disabled
     @Test
     public void countriesShouldBeThere() {
         // commenting that out for now as I turned off Bootstrap
