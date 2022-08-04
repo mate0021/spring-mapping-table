@@ -116,4 +116,16 @@ public class OrderHeader extends BaseEntity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getCustomer(), getShippingAddress(), getBillingAddress(), getOrderStatus());
     }
+
+    @Override
+    public String toString() {
+        return "OrderHeader{" +
+                "customer=" + customer +
+                ", shippingAddress=" + shippingAddress +
+                ", billingAddress=" + billingAddress +
+                ", orderStatus=" + orderStatus +
+                ", orderLines=" + orderLines +
+                ", orderApproval=" + orderApproval +
+                '}';
+    }
 }

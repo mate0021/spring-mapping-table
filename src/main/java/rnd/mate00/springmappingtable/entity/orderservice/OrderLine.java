@@ -17,6 +17,7 @@ public class OrderLine extends BaseEntity {
     @ManyToOne
     private Product product;
 
+
     public OrderLine() {
     }
 
@@ -60,5 +61,14 @@ public class OrderLine extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getQuantityOrdered(), getOrderHeader());
+    }
+
+    @Override
+    public String toString() {
+        return "OrderLine{" +
+                "quantityOrdered=" + quantityOrdered +
+                ", orderHeader=" + orderHeader +
+                ", product=" + product +
+                '}';
     }
 }

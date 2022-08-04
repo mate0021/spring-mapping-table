@@ -72,4 +72,13 @@ public class Product extends BaseEntity {
     public int hashCode() {
         return Objects.hash(super.hashCode(), getDescription(), getProductStatus());
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "description='" + description + '\'' +
+                ", productStatus=" + productStatus +
+                ", categories=" + categories +
+                '}';
+    }
 }

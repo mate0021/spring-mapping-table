@@ -38,4 +38,12 @@ public class OrderApproval extends BaseEntity {
     public void setOrderHeader(OrderHeader orderHeader) {
         this.orderHeader = orderHeader;
     }
+
+    @Override
+    public String toString() {
+        return "OrderApproval{" +
+                "approvedBy='" + approvedBy + '\'' +
+                ", orderHeader=" + orderHeader +
+                '}';
+    }
 }

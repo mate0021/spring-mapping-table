@@ -90,4 +90,16 @@ public class Customer extends BaseEntity {
         this.orderHeader.add(orderHeader);
         orderHeader.setCustomer(this);
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + getId() + '\'' +
+                "customerName='" + customerName + '\'' +
+                ", address=" + address +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", orderHeader=" + orderHeader +
+                '}';
+    }
 }
