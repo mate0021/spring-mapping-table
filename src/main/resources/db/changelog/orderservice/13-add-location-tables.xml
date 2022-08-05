@@ -1,0 +1,114 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="mate00" id="13">
+
+        <!-- source tables -->
+        <sql>
+            CREATE TABLE sta_location_region
+            (
+                id          int         NOT NULL auto_increment primary key,
+                region_name varchar(20) NOT NULL
+            );
+
+            CREATE TABLE sta_location_country
+            (
+                id           int          NOT NULL auto_increment primary key,
+                country_name varchar(100) NOT NULL,
+                country_code varchar(10)  NOT NULL,
+                region_id    int,
+                constraint fk_region_id foreign key (region_id) references sta_location_region(id)
+            );
+
+            CREATE TABLE sta_location_location
+            (
+                id            int NOT NULL auto_increment primary key,
+                location_name varchar(100),
+                location_code varchar(10),
+                country_id    int,
+                country_name  nvarchar(200),
+                constraint fk_country_id foreign key (country_id) references sta_location_country(id)
+            );
+
+
+            insert into sta_location_region(region_name) values ('AMER');
+            insert into sta_location_region(region_name) values ('APAC');
+            insert into sta_location_region(region_name) values ('EMEA');
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Kanada', 'CA', (select id from sta_location_region where region_name = 'AMER'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('United States', 'US', (select id from sta_location_region where region_name = 'AMER'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Mexico', 'MX', (select id from sta_location_region where region_name = 'AMER'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('China', 'CN', (select id from sta_location_region where region_name = 'APAC'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Japan', 'JP', (select id from sta_location_region where region_name = 'APAC'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Thailand', 'TH', (select id from sta_location_region where region_name = 'APAC'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('India', 'IN', (select id from sta_location_region where region_name = 'APAC'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Poland', 'PL', (select id from sta_location_region where region_name = 'EMEA'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Germany', 'DE', (select id from sta_location_region where region_name = 'EMEA'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('France', 'FR', (select id from sta_location_region where region_name = 'EMEA'));
+
+            insert into sta_location_country(country_name, country_code, region_id)
+                values('Italy', 'IT', (select id from sta_location_region where region_name = 'EMEA'));
+
+
+            CREATE TABLE bb_product (
+                product_id int not null auto_increment primary key,
+                product_name varchar(100) not null,
+                job_id int
+            );
+
+            insert into bb_product(product_name, job_id) values ('prod1', 123);
+            insert into bb_product(product_name, job_id) values ('prod2', 123);
+            insert into bb_product(product_name, job_id) values ('prod3', 123);
+            insert into bb_product(product_name, job_id) values ('prod4', 123);
+            insert into bb_product(product_name, job_id) values ('prod5', 123);
+            insert into bb_product(product_name, job_id) values ('prod6', 123);
+
+        <!-- output tables -->
+            CREATE TABLE product_region (
+                product_id int not null,
+                region_id int not null,
+                job_id int,
+                primary key (product_id, region_id),
+                constraint fk_r_product_id foreign key (product_id) references bb_product(product_id),
+                constraint fk_r_region_id foreign key (region_id) references sta_location_region(id)
+            );
+
+            CREATE TABLE product_country (
+                product_id int not null,
+                country_id int not null,
+                job_id int,
+                primary key (product_id, country_id),
+                constraint fk_c_product_id foreign key (product_id) references bb_product(product_id),
+                constraint fk_c_country_id foreign key (country_id) references sta_location_country(id)
+            );
+
+            CREATE TABLE product_location (
+                product_id int not null,
+                location_id int not null,
+                job_id int,
+                primary key (product_id, location_id),
+                constraint fk_l_product_id foreign key (product_id) references bb_product(product_id),
+                constraint fk_l_region_id foreign key (location_id) references sta_location_location(id)
+            );
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
