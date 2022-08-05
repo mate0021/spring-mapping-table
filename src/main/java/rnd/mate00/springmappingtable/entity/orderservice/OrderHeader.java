@@ -17,7 +17,7 @@ import java.util.Set;
 })
 public class OrderHeader extends BaseEntity {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Customer customer;
 
     @Embedded
