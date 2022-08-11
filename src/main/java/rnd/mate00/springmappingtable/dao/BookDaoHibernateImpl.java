@@ -5,6 +5,7 @@ import rnd.mate00.springmappingtable.entity.Book;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 
 @Component
 public class BookDaoHibernateImpl implements BookDao {
@@ -17,7 +18,17 @@ public class BookDaoHibernateImpl implements BookDao {
 
     @Override
     public Book findBookByTitle(String title) {
-        return null;
+        final EntityManager em = getEntityManager();
+
+        String query = "SELECT b FROM Book b WHERE b.title = :title";
+        TypedQuery<Book> q = em.createQuery(query, Book.class);
+        q.setParameter("title", title);
+
+        Book result = q.getSingleResult();
+
+        em.close();
+
+        return result;
     }
 
     @Override
@@ -31,8 +42,8 @@ public class BookDaoHibernateImpl implements BookDao {
         em.getTransaction().begin();
 
         em.persist(book);
-//        em.flush();                   // <- with those two lines uncommented
-//        em.getTransaction().commit(); // i would write "physically" to a DB
+        em.flush();                   // <- with those two lines uncommented
+        em.getTransaction().commit(); // i would write "physically" to a DB
 
         em.close();
 
