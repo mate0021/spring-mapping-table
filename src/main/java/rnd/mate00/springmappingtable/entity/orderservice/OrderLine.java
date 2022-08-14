@@ -3,6 +3,7 @@ package rnd.mate00.springmappingtable.entity.orderservice;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +17,9 @@ public class OrderLine extends BaseEntity {
 
     @ManyToOne
     private Product product;
+
+    @Version
+    private int version;
 
 
     public OrderLine() {
@@ -47,6 +51,14 @@ public class OrderLine extends BaseEntity {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

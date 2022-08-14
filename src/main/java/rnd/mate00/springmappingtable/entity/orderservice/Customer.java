@@ -1,12 +1,6 @@
 package rnd.mate00.springmappingtable.entity.orderservice;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +24,9 @@ public class Customer extends BaseEntity {
 
     @OneToMany(mappedBy = "customer")
     private Set<OrderHeader> orderHeader = new HashSet<>();
+
+    @Version
+    private int version;
 
 
     public Customer() {
@@ -89,6 +86,14 @@ public class Customer extends BaseEntity {
     public void addOrderHeader(OrderHeader orderHeader) {
         this.orderHeader.add(orderHeader);
         orderHeader.setCustomer(this);
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

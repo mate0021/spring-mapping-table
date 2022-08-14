@@ -35,6 +35,10 @@ public class OrderHeader extends BaseEntity {
     @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "orderHeader")
     private OrderApproval orderApproval;
 
+    @Version
+    private int version;
+
+
     public void addOrderLine(OrderLine orderLine) {
         orderLines.add(orderLine);
         orderLine.setOrderHeader(this);
@@ -101,6 +105,14 @@ public class OrderHeader extends BaseEntity {
     public void setOrderApproval(OrderApproval orderApproval) {
         this.orderApproval = orderApproval;
         orderApproval.setOrderHeader(this);
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override
