@@ -24,6 +24,6 @@
     <include file="db/changelog/orderservice/13-add-location-tables.xml"/>
     <include file="db/changelog/orderservice/14-add-version-optimistic-locking.xml"/>
     <include file="db/changelog/orderservice/15-update-product-add-quantity.xml"/>
-
+    <include file="db/changelog/orderservice/16-add-mapping-bb_product_regions-table.xml"/>
 
 </databaseChangeLog>
