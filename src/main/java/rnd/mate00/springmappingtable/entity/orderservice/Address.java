@@ -1,5 +1,7 @@
 package rnd.mate00.springmappingtable.entity.orderservice;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
@@ -7,6 +9,7 @@ import java.util.Objects;
 public class Address {
 
     private String address;
+    @Length(max = 30)
     private String city;
     private String postalCode;
 
