@@ -26,5 +26,7 @@
     <include file="db/changelog/orderservice/add-table-hibernate-sequences.xml"/>
     <include file="db/changelog/orderservice/add-tables-for-table_per_class.xml"/>
 
+    <include file="db/changelog/orderservice/add-tables-for-single_table.xml"/>
+
 
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-package rnd.mate00.springmappingtable.repository.orderservice;
+package rnd.mate00.springmappingtable.repository.orderservice.tableperclass;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
