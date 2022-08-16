@@ -23,5 +23,8 @@
     <include file="db/changelog/orderservice/12-add-table-customer.xml"/>
     <include file="db/changelog/orderservice/13-add-location-tables.xml"/>
 
+    <include file="db/changelog/orderservice/add-table-hibernate-sequences.xml"/>
+    <include file="db/changelog/orderservice/add-tables-for-table_per_class.xml"/>
+
 
 </databaseChangeLog>
