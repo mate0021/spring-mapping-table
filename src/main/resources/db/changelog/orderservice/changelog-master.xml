@@ -28,5 +28,6 @@
     <include file="db/changelog/orderservice/17-add-table-hibernate-sequences.xml"/>
     <include file="db/changelog/orderservice/18-add-tables-for-table_per_class.xml"/>
     <include file="db/changelog/orderservice/19-add-tables-for-single_table.xml"/>
+    <include file="db/changelog/orderservice/20-add-table-creditcard.xml"/>
 
 </databaseChangeLog>
