@@ -16,6 +16,7 @@ public class CreditCard {
     @Column
     private String holderName;
 
+    @Encrypted
     @Column
     private String creditCardNumber;
 
